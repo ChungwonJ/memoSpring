@@ -14,6 +14,7 @@ import java.util.*;
 public class MemoController {
     private final Map<Long, Memo> memoList = new HashMap<>();
 
+    // 메모 생성 기능
     @PostMapping
     public ResponseEntity<MemoResponseDto> crateMemo(@RequestBody MemoRequestDto dto) {
         // 식별자가 1씩 증가 하도록 만듦
@@ -28,6 +29,7 @@ public class MemoController {
         return new ResponseEntity<>(new MemoResponseDto(memo), HttpStatus.CREATED);
     }
 
+    // 메모 조회 기능
     @GetMapping("/{id}")
     public ResponseEntity<MemoResponseDto> findMemoById(@PathVariable Long id) {
 
@@ -42,6 +44,7 @@ public class MemoController {
         return new ResponseEntity<>(new MemoResponseDto(memo), HttpStatus.OK);
     }
 
+    //메모 수정
     @PutMapping("/{id}")
     public ResponseEntity<MemoResponseDto> updateMemo(
             @PathVariable Long id,
@@ -67,6 +70,7 @@ public class MemoController {
         return new ResponseEntity<>(new MemoResponseDto(memo), HttpStatus.OK);
     }
 
+    // 메모 일부 수정기능
     @PatchMapping("/{id}")
     public ResponseEntity<MemoResponseDto> updateTitle(
             @PathVariable Long id,
@@ -88,6 +92,7 @@ public class MemoController {
         return new ResponseEntity<>(new MemoResponseDto(memo), HttpStatus.OK);
     }
 
+    // 메모 삭제
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteMemo(@PathVariable Long id) {
 
